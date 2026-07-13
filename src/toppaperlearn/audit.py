@@ -65,7 +65,7 @@ def audit_draft(
     overlap_checked = bool(guardpack)
     if guardpack:
         ngram = int(guardpack["ngram"])
-        salt = str(guardpack.get("salt", "toppaperstyleguard-v1"))
+        salt = str(guardpack.get("salt", "toppaperlearn-v1"))
         known = guardpack["fingerprints"]
         common = set(guardpack.get("common_fingerprints", [])) if ignore_common_ngrams else set()
         for sentence_index, sentence in enumerate(sentences):
@@ -153,7 +153,7 @@ def audit_to_json(audit: dict[str, Any]) -> str:
 
 def audit_to_text(audit: dict[str, Any]) -> str:
     lines = [
-        f"TopPaperStyleGuard audit: {audit['draft']}",
+        f"TopPaperLearn audit: {audit['draft']}",
         f"Risk: {audit['risk']}",
         f"Matched n-grams: {audit['overlap']['total_matched_ngrams']}",
         f"Ignored common n-grams: {audit['overlap'].get('ignored_common_ngrams', 0)}",
@@ -183,7 +183,7 @@ def audit_to_text(audit: dict[str, Any]) -> str:
 
 def audit_to_markdown(audit: dict[str, Any]) -> str:
     lines = [
-        f"# TopPaperStyleGuard Audit",
+        f"# TopPaperLearn Audit",
         "",
         f"- Draft: `{audit['draft']}`",
         f"- Risk: **{audit['risk']}**",

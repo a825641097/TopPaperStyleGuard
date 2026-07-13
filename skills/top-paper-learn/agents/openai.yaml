@@ -1,0 +1,4 @@
+interface:
+  display_name: "TopPaperLearn"
+  short_description: "Learn journal style without copying text"
+  default_prompt: "Use $top-paper-learn to improve this manuscript's academic structure and restraint, then audit source-like overlap with the local guardpack."

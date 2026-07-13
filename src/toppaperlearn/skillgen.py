@@ -15,7 +15,7 @@ def profile_to_markdown(profile: dict[str, Any]) -> str:
         f"- {item['item']} ({item['count']})" for item in sequences[:5]
     ) or "- No sequence detected"
 
-    return f"""# TopPaperStyleGuard Profile Reference
+    return f"""# TopPaperLearn Profile Reference
 
 Field: {profile.get("field", "general")}
 Documents: {profile.get("corpus", {}).get("document_count", 0)}

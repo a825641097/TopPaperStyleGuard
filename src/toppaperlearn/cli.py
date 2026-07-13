@@ -112,7 +112,7 @@ def _cmd_inspect(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="tpsg",
+        prog="tpl",
         description="Learn top-journal writing structure while guarding against source overlap.",
     )
     sub = parser.add_subparsers(required=True)
@@ -124,8 +124,8 @@ def build_parser() -> argparse.ArgumentParser:
         "--sections",
         help="Comma-separated section headings to learn from, e.g. abstract,introduction.",
     )
-    build.add_argument("--profile-out", type=Path, default=Path("topstyle.profile.json"))
-    build.add_argument("--guard-out", type=Path, default=Path("topstyle.guard.json"))
+    build.add_argument("--profile-out", type=Path, default=Path("toplearn.profile.json"))
+    build.add_argument("--guard-out", type=Path, default=Path("toplearn.guard.json"))
     build.add_argument("--skill-reference", type=Path)
     build.add_argument("--ngram", type=int, default=8)
     build.add_argument(

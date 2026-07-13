@@ -1,6 +1,6 @@
 # Ethics
 
-TopPaperStyleGuard is for responsible academic writing assistance.
+TopPaperLearn is for responsible academic writing assistance.
 
 ## Intended Use
 

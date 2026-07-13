@@ -1,4 +1,4 @@
-"""TopPaperStyleGuard public API."""
+"""TopPaperLearn public API."""
 
 from .audit import audit_draft
 from .guard import build_guardpack

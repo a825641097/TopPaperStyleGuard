@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from toppaperstyleguard.cli import main
+from toppaperlearn.cli import main
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,8 +12,8 @@ class CliTests(unittest.TestCase):
     def test_cli_build_and_audit(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
-            profile = tmp_path / "topstyle.profile.json"
-            guard = tmp_path / "topstyle.guard.json"
+            profile = tmp_path / "toplearn.profile.json"
+            guard = tmp_path / "toplearn.guard.json"
             reference = tmp_path / "profile.md"
 
             self.assertEqual(
@@ -75,7 +75,7 @@ class CliTests(unittest.TestCase):
             )
 
             self.assertEqual(main(["inspect", str(profile), "--guard", str(guard)]), 0)
-            self.assertIn("# TopPaperStyleGuard Audit", markdown.read_text(encoding="utf-8"))
+            self.assertIn("# TopPaperLearn Audit", markdown.read_text(encoding="utf-8"))
             self.assertNotIn("Policy uncertainty shapes firm behavior", markdown.read_text(encoding="utf-8"))
 
     def test_cli_sections_miss_is_clear_error(self):
@@ -98,7 +98,7 @@ class CliTests(unittest.TestCase):
 
     def test_cli_requires_guard_unless_style_only(self):
         with tempfile.TemporaryDirectory() as tmp:
-            profile = Path(tmp) / "topstyle.profile.json"
+            profile = Path(tmp) / "toplearn.profile.json"
             self.assertEqual(
                 main(
                     [
@@ -107,7 +107,7 @@ class CliTests(unittest.TestCase):
                         "--profile-out",
                         str(profile),
                         "--guard-out",
-                        str(Path(tmp) / "topstyle.guard.json"),
+                        str(Path(tmp) / "toplearn.guard.json"),
                         "--common-doc-threshold",
                         "2",
                     ]

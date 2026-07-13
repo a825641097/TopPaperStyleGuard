@@ -1,10 +1,10 @@
 import unittest
 from pathlib import Path
 
-from toppaperstyleguard.audit import audit_draft
-from toppaperstyleguard.guard import build_guardpack, load_guardpack, write_guardpack
-from toppaperstyleguard.profile import build_profile
-from toppaperstyleguard.text import read_documents
+from toppaperlearn.audit import audit_draft
+from toppaperlearn.guard import build_guardpack, load_guardpack, write_guardpack
+from toppaperlearn.profile import build_profile
+from toppaperlearn.text import read_documents
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,7 +65,7 @@ class ProfileGuardAuditTests(unittest.TestCase):
             loaded = load_guardpack(path)
 
         self.assertEqual(loaded["fingerprint_format_version"], "legacy-fixed-salt-v0")
-        self.assertEqual(loaded["salt"], "toppaperstyleguard-v1")
+        self.assertEqual(loaded["salt"], "toppaperlearn-v1")
 
     def test_audit_flags_copied_opening_span(self):
         profile = build_profile(ROOT / "examples" / "corpus", field="economics")

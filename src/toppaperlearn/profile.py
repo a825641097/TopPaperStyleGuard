@@ -79,7 +79,7 @@ def build_profile(
 
     return {
         "schema_version": SCHEMA_VERSION,
-        "created_by": "TopPaperStyleGuard",
+        "created_by": "TopPaperLearn",
         "field": field,
         "privacy": {
             "stores_source_text": False,

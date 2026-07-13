@@ -1,6 +1,6 @@
 # Security
 
-TopPaperStyleGuard processes local academic manuscripts and corpora.
+TopPaperLearn processes local academic manuscripts and corpora.
 
 Report security concerns by opening a private advisory or issue in the project repository.
 

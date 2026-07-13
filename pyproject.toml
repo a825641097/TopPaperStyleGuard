@@ -3,7 +3,7 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "toppaperstyleguard"
+name = "toppaperlearn"
 version = "0.1.0"
 description = "Learn top-journal rhetorical patterns without copying source text."
 readme = "README.md"
@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 authors = [
-  {name = "TopPaperStyleGuard contributors"},
+  {name = "TopPaperLearn contributors"},
 ]
 keywords = [
   "academic-writing",
@@ -37,14 +37,14 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-tpsg = "toppaperstyleguard.cli:main"
-toppaperstyleguard = "toppaperstyleguard.cli:main"
+tpl = "toppaperlearn.cli:main"
+toppaperlearn = "toppaperlearn.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/a825641097/TopPaperStyleGuard"
-Repository = "https://github.com/a825641097/TopPaperStyleGuard"
-Issues = "https://github.com/a825641097/TopPaperStyleGuard/issues"
-Documentation = "https://github.com/a825641097/TopPaperStyleGuard#readme"
+Homepage = "https://github.com/a825641097/TopPaperLearn"
+Repository = "https://github.com/a825641097/TopPaperLearn"
+Issues = "https://github.com/a825641097/TopPaperLearn/issues"
+Documentation = "https://github.com/a825641097/TopPaperLearn#readme"
 
 [tool.setuptools.packages.find]
 where = ["src"]

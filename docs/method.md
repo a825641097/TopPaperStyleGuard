@@ -1,6 +1,6 @@
 # Method
 
-TopPaperStyleGuard separates style learning from text reuse.
+TopPaperLearn separates style learning from text reuse.
 
 ## Corpus Ingestion
 

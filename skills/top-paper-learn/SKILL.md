@@ -1,13 +1,13 @@
 ---
-name: toppaperstyleguard
-description: Top-journal academic writing revision with source-overlap safeguards. Use when an agent needs to revise abstracts, introductions, contribution paragraphs, literature-gap positioning, empirical strategy prose, or discussion sections using a TopPaperStyleGuard profile while avoiding source-like phrasing, running tpsg audit, and preserving the user's actual claims and evidence.
+name: top-paper-learn
+description: Top-journal academic writing revision with source-overlap safeguards. Use when an agent needs to revise abstracts, introductions, contribution paragraphs, literature-gap positioning, empirical strategy prose, or discussion sections using a TopPaperLearn profile while avoiding source-like phrasing, running tpl audit, and preserving the user's actual claims and evidence.
 ---
 
-# TopPaperStyleGuard
+# TopPaperLearn
 
 ## Overview
 
-Use this skill to improve academic prose toward the structure and restraint of top-journal writing without copying corpus wording. Learn from `topstyle.profile.json` or `references/profile.md`; never imitate source sentences from the training corpus.
+Use this skill to improve academic prose toward the structure and restraint of top-journal writing without copying corpus wording. Learn from `toplearn.profile.json` or `references/profile.md`; never imitate source sentences from the training corpus.
 
 ## Ground Rules
 
@@ -15,29 +15,29 @@ Use this skill to improve academic prose toward the structure and restraint of t
 - Learn rhetorical moves, not sentences.
 - Do not request or reproduce protected source passages unless the user explicitly provides a short excerpt for analysis.
 - Do not use synonym-swapping to disguise copied text. If overlap is flagged, rewrite from the underlying idea.
-- Run `tpsg audit` before finalizing when a profile and guardpack are available.
+- Run `tpl audit` before finalizing when a profile and guardpack are available.
 - Do not claim overlap safety when no guardpack was used.
 - Confirm the user is allowed to process the source corpus if that is unclear.
 - Be explicit about uncertainty: this skill improves structure and overlap hygiene, not scientific validity.
 
 ## Inputs to Look For
 
-- `topstyle.profile.json`: aggregate style and rhetorical move profile.
-- `topstyle.guard.json`: hashed source-overlap guardpack.
-- `skills/toppaperstyleguard/references/profile.md`: optional human-readable profile reference.
+- `toplearn.profile.json`: aggregate style and rhetorical move profile.
+- `toplearn.guard.json`: hashed source-overlap guardpack.
+- `skills/top-paper-learn/references/profile.md`: optional human-readable profile reference.
 - Draft files such as `abstract.md`, `introduction.md`, `paper.tex`, or section snippets pasted by the user.
 
 If a project-specific profile reference exists, read it before revising. If only JSON exists, inspect it with:
 
 ```console
-tpsg inspect topstyle.profile.json
+tpl inspect toplearn.profile.json
 ```
 
-If expected files are not in the current directory, search common locations such as `.` , `profiles/`, `style/`, `skills/toppaperstyleguard/references/`, and the manuscript directory. If no guardpack is available, use `--style-only` and explicitly state that overlap was not checked.
+If expected files are not in the current directory, search common locations such as `.` , `profiles/`, `style/`, `skills/top-paper-learn/references/`, and the manuscript directory. If no guardpack is available, use `--style-only` and explicitly state that overlap was not checked.
 
 If the user has a corpus and draft but no artifacts, build them first. Use `--sections introduction` only for full papers with recognizable section headings; if the corpus already contains introduction-only files, omit `--sections`.
 
-If the draft is pasted in chat, ask to save it to a local file or create a temporary file before audit. Do not claim audit success for text that was not actually checked with `tpsg audit`.
+If the draft is pasted in chat, ask to save it to a local file or create a temporary file before audit. Do not claim audit success for text that was not actually checked with `tpl audit`.
 
 ## Revision Workflow
 
@@ -58,13 +58,13 @@ If the draft is pasted in chat, ask to save it to a local file or create a tempo
 5. Audit overlap:
 
 ```console
-tpsg audit path/to/draft.md --profile topstyle.profile.json --guard topstyle.guard.json
+tpl audit path/to/draft.md --profile toplearn.profile.json --guard toplearn.guard.json
 ```
 
 For large corpora, prefer:
 
 ```console
-tpsg audit path/to/draft.md --profile topstyle.profile.json --guard topstyle.guard.json --ignore-common-ngrams
+tpl audit path/to/draft.md --profile toplearn.profile.json --guard toplearn.guard.json --ignore-common-ngrams
 ```
 
 6. If risk is `medium` or `high`, rewrite flagged sentences from scratch and rerun the audit. Treat common n-grams as lower priority than distinctive long spans.

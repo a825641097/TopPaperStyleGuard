@@ -1,16 +1,16 @@
 cff-version: 1.2.0
-message: "If you use TopPaperStyleGuard in academic writing workflows, please cite the released version."
-title: "TopPaperStyleGuard: journal-style learning with source-overlap safeguards"
+message: "If you use TopPaperLearn in academic writing workflows, please cite the released version."
+title: "TopPaperLearn: journal-style learning with source-overlap safeguards"
 type: software
 authors:
-  - name: "TopPaperStyleGuard contributors"
+  - name: "TopPaperLearn contributors"
 version: 0.1.0
 date-released: 2026-07-13
 license: Apache-2.0
-repository-code: "https://github.com/a825641097/TopPaperStyleGuard"
-url: "https://github.com/a825641097/TopPaperStyleGuard"
+repository-code: "https://github.com/a825641097/TopPaperLearn"
+url: "https://github.com/a825641097/TopPaperLearn"
 abstract: >-
-  TopPaperStyleGuard extracts aggregate rhetorical patterns from top-journal
+  TopPaperLearn extracts aggregate rhetorical patterns from top-journal
   writing corpora and audits drafts against hashed source-overlap guards, so
   agents can learn structure without copying protected source text.
 keywords:

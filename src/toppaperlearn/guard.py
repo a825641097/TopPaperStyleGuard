@@ -21,7 +21,7 @@ def hash_ngram(tokens: list[str], salt: str) -> str:
 
 
 def sentence_fingerprints(sentence: str, ngram: int) -> list[tuple[int, str]]:
-    return sentence_fingerprints_with_salt(sentence, ngram, "toppaperstyleguard-v1")
+    return sentence_fingerprints_with_salt(sentence, ngram, "toppaperlearn-v1")
 
 
 def sentence_fingerprints_with_salt(sentence: str, ngram: int, salt: str) -> list[tuple[int, str]]:
@@ -81,7 +81,7 @@ def build_guardpack(
 
     return {
         "schema_version": "0.1",
-        "created_by": "TopPaperStyleGuard",
+        "created_by": "TopPaperLearn",
         "fingerprint_format_version": "salted-aggregate-v1",
         "hash_algorithm": "sha256",
         "salt_policy": "random per guardpack; stored in private guardpack for local audit",
@@ -121,5 +121,5 @@ def load_guardpack(path: Path) -> dict[str, Any]:
         raise ValueError(f"Invalid guardpack: {path}")
     if "salt" not in guardpack:
         guardpack["fingerprint_format_version"] = "legacy-fixed-salt-v0"
-        guardpack["salt"] = "toppaperstyleguard-v1"
+        guardpack["salt"] = "toppaperlearn-v1"
     return guardpack

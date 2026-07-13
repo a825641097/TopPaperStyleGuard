@@ -1,10 +1,10 @@
-# TopPaperStyleGuard
+# TopPaperLearn
 
 **Learn top-journal writing structure without copying top-journal text.**
 
 [简体中文](README.zh-CN.md) | [Method](docs/method.md) | [Agent skill](docs/agent-skill.md) | [Ethics](docs/ethics.md)
 
-TopPaperStyleGuard turns a private corpus of high-quality papers into local artifacts:
+TopPaperLearn turns a private corpus of high-quality papers into local artifacts:
 
 - a **style profile**: aggregate rhetorical patterns, sentence rhythm, paragraph structure, move sequences, and stance markers;
 - a **guardpack**: salted hashed n-gram fingerprints used to detect drafts that drift too close to the source corpus;
@@ -23,7 +23,7 @@ It is built for researchers and coding agents that need to improve academic writ
 - Creates a hashed overlap guardpack for local similarity checks.
 - Audits drafts for long source-like spans before submission or agent-assisted revision.
 - Generates a profile reference that agents can load as a writing Skill resource.
-- Ships a portable agent skill at [`skills/toppaperstyleguard`](skills/toppaperstyleguard).
+- Ships a portable agent skill at [`skills/top-paper-learn`](skills/top-paper-learn).
 
 ## Quick Start
 
@@ -36,7 +36,7 @@ python -m pip install .
 For a temporary source-tree trial without installing:
 
 ```console
-PYTHONPATH=src python -m toppaperstyleguard --help
+PYTHONPATH=src python -m toppaperlearn --help
 ```
 
 ### Try the Included Example
@@ -44,22 +44,22 @@ PYTHONPATH=src python -m toppaperstyleguard --help
 If you do not have a corpus ready yet, run the bundled offline example:
 
 ```console
-python -m toppaperstyleguard build examples/corpus \
+python -m toppaperlearn build examples/corpus \
   --field economics \
-  --profile-out /tmp/tpsg.profile.json \
-  --guard-out /tmp/tpsg.guard.json \
-  --skill-reference /tmp/tpsg-profile.md \
+  --profile-out /tmp/tpl.profile.json \
+  --guard-out /tmp/tpl.guard.json \
+  --skill-reference /tmp/tpl-profile.md \
   --common-doc-threshold 2
 
-python -m toppaperstyleguard audit examples/drafts/introduction.md \
-  --profile /tmp/tpsg.profile.json \
-  --guard /tmp/tpsg.guard.json \
+python -m toppaperlearn audit examples/drafts/introduction.md \
+  --profile /tmp/tpl.profile.json \
+  --guard /tmp/tpl.guard.json \
   --ignore-common-ngrams \
   --fail-on none
 
-python -m toppaperstyleguard audit examples/drafts/revised-introduction.md \
-  --profile /tmp/tpsg.profile.json \
-  --guard /tmp/tpsg.guard.json \
+python -m toppaperlearn audit examples/drafts/revised-introduction.md \
+  --profile /tmp/tpl.profile.json \
+  --guard /tmp/tpl.guard.json \
   --ignore-common-ngrams \
   --fail-on none
 ```
@@ -67,11 +67,11 @@ python -m toppaperstyleguard audit examples/drafts/revised-introduction.md \
 Build a profile and guardpack from your local top-journal corpus:
 
 ```console
-tpsg build papers/top-journal-corpus \
+tpl build papers/top-journal-corpus \
   --field economics \
-  --profile-out topstyle.profile.json \
-  --guard-out topstyle.guard.json \
-  --skill-reference skills/toppaperstyleguard/references/profile.md \
+  --profile-out toplearn.profile.json \
+  --guard-out toplearn.guard.json \
+  --skill-reference skills/top-paper-learn/references/profile.md \
   --common-doc-threshold 5
 ```
 
@@ -90,15 +90,15 @@ drafts/my-introduction.md
 If each corpus file already contains only an introduction, do not use `--sections`:
 
 ```console
-tpsg build data/top-intros \
+tpl build data/top-intros \
   --field economics \
-  --profile-out topstyle.profile.json \
-  --guard-out topstyle.guard.json \
-  --skill-reference skills/toppaperstyleguard/references/profile.md
+  --profile-out toplearn.profile.json \
+  --guard-out toplearn.guard.json \
+  --skill-reference skills/top-paper-learn/references/profile.md
 
-tpsg audit drafts/my-introduction.md \
-  --profile topstyle.profile.json \
-  --guard topstyle.guard.json \
+tpl audit drafts/my-introduction.md \
+  --profile toplearn.profile.json \
+  --guard toplearn.guard.json \
   --ignore-common-ngrams \
   --fail-on medium
 ```
@@ -106,12 +106,12 @@ tpsg audit drafts/my-introduction.md \
 If each corpus file is a full paper with recognizable headings such as `Introduction` or `\section{Introduction}`, use:
 
 ```console
-tpsg build data/top-papers \
+tpl build data/top-papers \
   --field economics \
   --sections introduction \
-  --profile-out topstyle.profile.json \
-  --guard-out topstyle.guard.json \
-  --skill-reference skills/toppaperstyleguard/references/profile.md
+  --profile-out toplearn.profile.json \
+  --guard-out toplearn.guard.json \
+  --skill-reference skills/top-paper-learn/references/profile.md
 ```
 
 Checklist: use UTF-8 text, one paper or section per file, clean obvious OCR artifacts, and remove tables or bibliography blocks when possible. The section parser is lightweight; if headings are missing or unusual, save the target section as a standalone file and omit `--sections`.
@@ -119,9 +119,9 @@ Checklist: use UTF-8 text, one paper or section per file, clean obvious OCR arti
 Audit a draft:
 
 ```console
-tpsg audit drafts/introduction.md \
-  --profile topstyle.profile.json \
-  --guard topstyle.guard.json \
+tpl audit drafts/introduction.md \
+  --profile toplearn.profile.json \
+  --guard toplearn.guard.json \
   --ignore-common-ngrams \
   --fail-on none
 ```
@@ -129,7 +129,7 @@ tpsg audit drafts/introduction.md \
 Example output:
 
 ```text
-TopPaperStyleGuard audit: drafts/introduction.md
+TopPaperLearn audit: drafts/introduction.md
 Risk: medium
 Matched n-grams: 9
 Max contiguous overlap: 11 words
@@ -144,7 +144,7 @@ Recommendations:
 
 ## Why This Is Not a Plagiarism Machine
 
-TopPaperStyleGuard is intentionally limited:
+TopPaperLearn is intentionally limited:
 
 - It does not generate papers from a corpus.
 - It does not store source sentences in the profile.
@@ -157,13 +157,13 @@ The tool is for learning durable writing strategy: how strong papers motivate a 
 
 ## Agent Skill
 
-Copy [`skills/toppaperstyleguard`](skills/toppaperstyleguard) into a compatible agent skills directory, or point an agent at its `SKILL.md`.
+Copy [`skills/top-paper-learn`](skills/top-paper-learn) into a compatible agent skills directory, or point an agent at its `SKILL.md`.
 
 Then use a prompt like:
 
 ```text
-Use $toppaperstyleguard to revise my introduction toward top-journal structure.
-Preserve my claims, avoid source-like wording, and run tpsg audit before finalizing.
+Use $top-paper-learn to revise my introduction toward top-journal structure.
+Preserve my claims, avoid source-like wording, and run tpl audit before finalizing.
 ```
 
 See [Agent Skill](docs/agent-skill.md).
@@ -172,11 +172,11 @@ See [Agent Skill](docs/agent-skill.md).
 
 | Command | Purpose |
 | --- | --- |
-| `tpsg build CORPUS` | Create a style profile and hashed guardpack |
-| `tpsg audit DRAFT` | Check a draft against the profile and guardpack |
-| `tpsg inspect PROFILE` | Inspect profile metadata and privacy contract |
+| `tpl build CORPUS` | Create a style profile and hashed guardpack |
+| `tpl audit DRAFT` | Check a draft against the profile and guardpack |
+| `tpl inspect PROFILE` | Inspect profile metadata and privacy contract |
 
-Use `tpsg inspect topstyle.profile.json --guard topstyle.guard.json` to confirm selected sections, move sequences, n-gram size, and guardpack settings before giving the artifacts to an agent.
+Use `tpl inspect toplearn.profile.json --guard toplearn.guard.json` to confirm selected sections, move sequences, n-gram size, and guardpack settings before giving the artifacts to an agent.
 
 For larger corpora, use `--common-doc-threshold` during build and `--ignore-common-ngrams` during audit to reduce false positives from generic academic boilerplate.
 The threshold must be no larger than the number of corpus documents.
@@ -187,11 +187,11 @@ Audit reports omit draft excerpts by default. Add `--include-excerpts` only when
 
 ## Supported Inputs
 
-The alpha version reads UTF-8 `.txt`, `.md`, `.markdown`, and `.tex` files. For PDFs, extract text first with your preferred local PDF text tool, then run `tpsg build` on the extracted files.
+The alpha version reads UTF-8 `.txt`, `.md`, `.markdown`, and `.tex` files. For PDFs, extract text first with your preferred local PDF text tool, then run `tpl build` on the extracted files.
 
 ## Where It Fits
 
-TopPaperStyleGuard complements grammar checkers, prose linters, and citation tools. It focuses on a narrower problem: **agent-assisted academic style learning with overlap safeguards**.
+TopPaperLearn complements grammar checkers, prose linters, and citation tools. It focuses on a narrower problem: **agent-assisted academic style learning with overlap safeguards**.
 
 It is useful for:
 
