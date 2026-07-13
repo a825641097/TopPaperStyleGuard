@@ -1,0 +1,3 @@
+Inspection regimes can affect investment even when statutory rules remain unchanged. Existing evidence usually treats regulatory uncertainty as a single object, which makes it hard to separate unstable legal standards from unstable enforcement timing.
+
+This project studies a staggered compliance-schedule reform that made inspection timing easier to anticipate across counties. By linking the rollout to firm balance sheets, the analysis asks whether predictability changes capital expenditure and short-term financing. The results indicate higher investment after the reform, especially among firms for which credit constraints are more likely to bind.

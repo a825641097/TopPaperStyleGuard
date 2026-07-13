@@ -1,0 +1,5 @@
+Abstract
+Household responses to information are important for public finance, but the mechanisms remain unclear. This paper studies a field experiment that provided taxpayers with personalized filing reminders. We find that reminders increase timely filing without changing reported income. The pattern is consistent with attention constraints rather than strategic misreporting. These findings speak to work on tax compliance and administrative design.
+
+Introduction
+Many public programs rely on households taking costly administrative steps. Yet little is known about when informational interventions change compliance rather than merely shifting timing. We study this question using a randomized reminder experiment. The design allows us to separate attention effects from changes in incentives. We find a sizable increase in timely filing, but no detectable change in taxable income. The results imply that low-cost administrative communication can improve compliance when frictions are informational.

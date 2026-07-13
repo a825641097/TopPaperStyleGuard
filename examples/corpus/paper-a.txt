@@ -1,0 +1,8 @@
+Abstract
+Regulatory uncertainty is central to investment decisions, yet little is known about how small firms adjust when enforcement becomes more predictable. We exploit a staggered compliance reform that changed inspection timing across counties. We find that affected firms increase capital expenditure and reduce short-term borrowing. The evidence is consistent with a financing channel rather than a demand shock. The paper contributes to research on regulation, uncertainty, and firm investment by isolating a source of predictability that is rarely observed directly.
+
+Introduction
+Policy uncertainty shapes firm behavior in many settings. However, existing evidence often combines uncertainty about rules with uncertainty about enforcement. This distinction matters because firms may respond differently when the law is stable but the timing of inspection changes. We ask whether predictable enforcement alters investment among small firms. We use administrative inspection schedules and firm balance sheets to compare counties before and after a staggered reform. The results suggest that predictability raises investment, with larger effects among firms facing tighter credit constraints.
+
+References
+Unrelated Reference Title. Journal of Placeholder Studies.
